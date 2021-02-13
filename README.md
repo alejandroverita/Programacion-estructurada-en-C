@@ -1419,5 +1419,246 @@ Reto
 
 
 
+## Recapitulación: Funciones
 
+Las funciones son bloques de código que realizan alguna operación o instrucciones. Estas al igual que en matemáticas pueden aceptar datos de entrada, a estos les llamamos parámetros o argumentos y datos de salida.
+
+¿Con qué finalidad hacemos estas secciones de código?
+
+- Encapsulamiento
+- Reusabilidad
+- Separar Tareas
+- Cambios a futuro
+
+La sintaxis para escribir una función es la siguiente:
+
+    tipo_de_datos nombre (parametros)
+    {
+    	bloque de instrucciones
+    }
+
+Primero se escribe el tipo de dato de la salida de datos, luego el nombre por el que se identificará la función y finalmente entre paréntesis los parámetros o entrada de datos.
+
+El dato final necesita ser descrito con el comando** return** y el dato que vamos a regresar, que tiene que** ser el mismo tipo de dato **el cual indicamos inicialmente al crear la función
+
+De no necesitar un dato de salida nuestra función puede ser de tipo void, esto quiere decir que no regresa ningún dato.
+
+
+
+<br>
+
+
+[========]
+
+
+## RECURSIVIDAD
+
+En C, las funciones pueden llamarse a sí mismas.
+Si una expresión en el cuerpo de una función llama a la propia función, se dice que ésta es recursiva.
+La recursividad es el proceso de definir algo en términos de sí mismo y a veces se llama definición circular.
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    int factorial (int n)
+    {
+        printf("Entra a la funcion factorial, n vale: %i \n", n);
+    
+        if (n > 1)
+        {
+            printf("La funcion se llamara a si misma otra vez \n");
+            return n * factorial (n-1);
+        }
+        else{
+            printf("N es igual a 1. Termina la recursividad");
+    
+            return 1;
+        }
+    }
+    
+    
+    int main()
+    {
+        printf("Recursividad \n");
+    
+        int result = factorial (5) ;
+    
+        printf ("\n EL resultado es: %i", result);
+    
+        return 0;
+    }
+    
+
+
+
+
+
+
+
+
+
+<br>
+
+
+[========]
+
+
+## APUNTADORES
+
+Un apuntador es una variable que guarda la dirección de memoria de otra variable.
+
+Las direcciones de memoria se suelen describir como números en hexadecimal. Un apuntador es una variable cuyo valor es la dirección de memoria de otra variable. Se dice que un apuntador “apunta” a la variable cuyo valor se almacena a partir de la dirección de memoria que contiene el apuntador.
+
+El operador de dirección (&) regresa la dirección de una variable.
+El operador de indirección (*) toma la dirección de una variable y regresa el dato que contiene esa dirección.
+
+
+    int *p;
+    /*
+    estamos diciendo: compu dame un espacio en memoria en donde puedo almacenar una direccion de alguna variable de tipo integer
+     */
+    
+    int a = 5;
+    /*
+    Aqui decimos: compu crea un espacio en la memoria del tamaño de un integer y almacena el valor 5 en el
+    */ 
+    
+    p = a;
+    /*
+    Aqui decimos: compu haz que la direccion donde esta la variable llamada a se almacene en mi variable puntero p
+    */
+    
+    *p = 10;
+    /*
+    Aqui lo que decimos es: compu cambia el valor que se encuentra en la direccion que aparece en p y cambialo por el valor 10
+    */
+    
+    printf( "%i", &a );
+    /*
+    Aqui lo que decimos es: compu imprime en pantalla la direccion en memoria de mi variable llamada a */
+
+
+<br>
+
+
+[========]
+
+## STRUT Y MANEJO DE ARCHIVOS
+
+### **Creación y apertura de archivos**
+
+Parámetros para la función fopen():
+
+““rb””: Abre un archivo en modo binario para lectura, el fichero debe existir.
+““w””: Abrir un archivo en modo binario para escritura, se crea si no existe o se sobreescribe si existe.
+
+Los struts permiten guardar varios elementos con diferentes tipos de datos a diferencia de los arrays que solo pueden guardar un solo tipo de datos
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    struct personalData
+    {
+        char name [20];
+        char lastName [20];
+        int age;
+    };
+    
+    
+    int main()
+    {
+        printf("Estructura de datos! \n");
+    
+        struct personalData person;
+    
+        printf("Leer datos: \n");
+    
+        printf("Ingresar nombre: \n");
+    
+        gets (person.name);
+    
+        printf("Ingresar apellido: \n");
+    
+        gets (person.lastName);
+    
+        printf("Ingresar edad: \n");
+    
+        scanf("%i", &person.age);
+    
+        printf("Imprimir datos: \n");
+    
+        printf(" %s \n", person.name);
+        printf(" %s \n", person.lastName);
+        printf(" %i \n", person.age);
+    
+    
+        return 0;
+    }
+    
+
+
+### Crear un archivo
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    int main()
+    {
+        printf("Archivos! Crear un archivo! \n");
+    
+    
+        FILE *archivo;
+    
+        archivo = fopen ("archivo001.dat", "w");
+    
+        if (archivo != NULL)
+        {
+            printf("El archivo se ha creado exitosamente. Abre la carpeta");
+    
+            fclose(archivo);
+        }
+        else
+        {
+            printf("El archivo no se ha creado");
+    
+        }
+    
+    
+        return 0;
+    }
+    
+	
+	
+	
+
+### ESCRITURA Y LECTURA DE ARCHIVOS
+
+Escritura cuenta con cuatro parametros:
+
+**fwrite (void *apuntador, size_t tamano, size_t cantidad, FILE archivo);**
+
+- void*apuntador: Apuntador con la direcion de la informacion que estamos guardando
+
+- size_t tamano: tamano de cada elemento que sera escrito
+
+- size_t cantidad: numero de elementos
+
+- FILE archivo: Apuntador con la direccion al archivo donde estamos guardando/escribiendo
+
+**fread (void *apuntador, size_t tamano, size_t cantidad, FILE archivo);**
+
+- void*apuntador: Apuntador con la direcion de la informacion que estamos leyendo
+
+- size_t tamano: tamano de cada elemento que sera leido
+
+- size_t cantidad: numero de elementos
+
+- FILE archivo: Apuntador con la direccion al archivo donde estamos leyendo
+
+<br>
+
+
+[========]
+
+## MANEJO DE LIBRERIAS
 
