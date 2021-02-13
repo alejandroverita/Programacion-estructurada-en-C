@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1613233581 source:d:\luisito el mas bello\programacion estructurada con c\librerias\main.c
+	<stdio.h>
+	<stdlib.h>
+	"operaciones.h"
+
+1613233110 d:\luisito el mas bello\programacion estructurada con c\librerias\operaciones.h
+
