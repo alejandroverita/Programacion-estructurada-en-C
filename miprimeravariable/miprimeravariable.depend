@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1604190351 source:d:\luisito el mas bello\programacion estructurada con c\miprimeravariable\main.c
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+
