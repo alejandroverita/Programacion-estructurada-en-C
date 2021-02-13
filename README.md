@@ -1662,3 +1662,6 @@ Escritura cuenta con cuatro parametros:
 
 ## MANEJO DE LIBRERIAS
 
+Una libreria es codigo de programacion ya escrito. Un conjunto de funciones independientes para solucionar un problema.
+
+
